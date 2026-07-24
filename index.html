@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -21,11 +21,11 @@
             --text-secondary: #59667a;
             --grid-line: rgba(44, 96, 121, 0.08);
         }
- 
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
- 
+
         html { scroll-behavior: smooth; }
- 
+
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             background: var(--paper);
@@ -33,13 +33,13 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
- 
+
         .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
- 
+
         h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
- 
+
         .mono { font-family: 'JetBrains Mono', monospace; }
- 
+
         /* ---------- Corner-bracket signature element ---------- */
         .bracket {
             position: relative;
@@ -64,7 +64,7 @@
             border-bottom-width: 3px;
             border-right-width: 3px;
         }
- 
+
         /* ---------- Hero ---------- */
         .hero {
             min-height: 100vh;
@@ -75,7 +75,7 @@
             position: relative;
             overflow: hidden;
         }
- 
+
         .hero::before {
             content: '';
             position: absolute;
@@ -86,7 +86,7 @@
             background-size: 42px 42px;
             mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 75%);
         }
- 
+
         .hero-eyebrow {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.78rem;
@@ -98,21 +98,21 @@
             opacity: 0;
             animation: riseIn 0.7s ease-out 0.1s forwards;
         }
- 
+
         .hero-content {
             position: relative;
             z-index: 1;
             text-align: center;
             color: white;
         }
- 
+
         .profile-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 30px;
         }
- 
+
         .profile-image {
             width: 176px;
             height: 176px;
@@ -124,31 +124,31 @@
             opacity: 0;
             animation: riseIn 0.8s ease-out 0.25s forwards, float 3.4s ease-in-out 1.2s infinite;
         }
- 
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-14px); }
         }
- 
+
         .profile-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
- 
+
         .profile-image.placeholder {
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 60px;
         }
- 
+
         @keyframes riseIn {
             from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
- 
+
         .hero-text h1 {
             font-size: clamp(2.2rem, 5vw, 3.4rem);
             font-weight: 700;
@@ -156,7 +156,7 @@
             opacity: 0;
             animation: riseIn 0.8s ease-out 0.4s forwards;
         }
- 
+
         .hero-text .subtitle {
             margin-top: 14px;
             font-family: 'JetBrains Mono', monospace;
@@ -167,7 +167,7 @@
             opacity: 0;
             animation: riseIn 0.8s ease-out 0.55s forwards;
         }
- 
+
         .scroll-indicator {
             position: absolute;
             bottom: 34px;
@@ -196,13 +196,13 @@
             60% { opacity: 0; top: 22px; }
             100% { opacity: 0; top: 22px; }
         }
- 
+
         /* ---------- Sections ---------- */
         section { padding: 100px 0; position: relative; }
         section:nth-child(even) { background: var(--surface); }
- 
+
         .section-head { margin-bottom: 56px; text-align: center; }
- 
+
         .section-tag {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
@@ -212,13 +212,13 @@
             display: block;
             margin-bottom: 10px;
         }
- 
+
         h2 {
             font-size: clamp(1.8rem, 3.4vw, 2.4rem);
             font-weight: 700;
             color: var(--ink);
         }
- 
+
         /* ---------- About ---------- */
         .about-content {
             max-width: 720px;
@@ -227,7 +227,7 @@
             font-size: 1.15rem;
             color: var(--text-secondary);
         }
- 
+
         /* ---------- Skills icon grid (Compétences Techniques) ---------- */
         .shapes-grid {
             display: grid;
@@ -235,7 +235,7 @@
             gap: 22px;
             margin-top: 10px;
         }
- 
+
         .shape-card {
             background: var(--surface);
             padding: 28px 18px;
@@ -265,26 +265,26 @@
             letter-spacing: 0.6px;
             color: var(--ink);
         }
- 
+
         /* ---------- Education — process-flow timeline ---------- */
         .education-timeline {
             max-width: 780px;
             margin: 20px auto 0;
         }
- 
+
         .flow-step {
             display: grid;
             grid-template-columns: 92px 1fr;
             gap: 0;
             position: relative;
         }
- 
+
         .flow-marker {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
- 
+
         .flow-tag {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.72rem;
@@ -295,16 +295,16 @@
             padding: 5px 8px;
             white-space: nowrap;
         }
- 
+
         .flow-connector {
             width: 2px;
             flex: 1;
             background: repeating-linear-gradient(to bottom, var(--line) 0 6px, transparent 6px 12px);
             margin-top: 8px;
         }
- 
+
         .flow-step:last-child .flow-connector { display: none; }
- 
+
         .flow-card {
             background: var(--surface);
             border: 1px solid var(--line);
@@ -318,7 +318,7 @@
             box-shadow: 0 10px 26px rgba(44, 96, 121, 0.1);
             transform: translateX(4px);
         }
- 
+
         .flow-card h3 { color: var(--blueprint-deep); font-size: 1.15rem; margin-bottom: 4px; }
         .flow-card .year {
             font-family: 'JetBrains Mono', monospace;
@@ -329,7 +329,7 @@
             display: block;
         }
         .flow-card p.desc { color: var(--text-secondary); font-size: 0.95rem; }
- 
+
         /* ---------- Tools grid (icônes plus grandes, sans fond, style premium) ---------- */
         .tools-grid {
             display: grid;
@@ -337,7 +337,7 @@
             gap: 28px;
             margin-top: 10px;
         }
- 
+
         .tool-card {
             background: var(--surface);
             padding: 30px 16px 24px;
@@ -351,7 +351,7 @@
             border-color: var(--blueprint);
             box-shadow: 0 18px 38px rgba(44, 96, 121, 0.16);
         }
- 
+
         .tool-icon {
             width: 100%;
             height: 84px;
@@ -372,19 +372,19 @@
             transition: transform 0.3s ease;
         }
         .tool-card:hover .tool-icon img { transform: scale(1.08); }
- 
+
         .tool-card:nth-child(2n) .tool-icon { animation-delay: 0.35s; }
         .tool-card:nth-child(3n) .tool-icon { animation-delay: 0.7s; }
         .tool-card:nth-child(4n) .tool-icon { animation-delay: 1.05s; }
         .tool-card:nth-child(5n) .tool-icon { animation-delay: 1.4s; }
- 
+
         .tool-card h4 {
             font-size: 0.88rem;
             font-weight: 600;
             color: var(--ink);
             letter-spacing: 0.3px;
         }
- 
+
         /* ---------- Internship — spec sheet card ---------- */
         .internship-card {
             max-width: 860px;
@@ -397,7 +397,7 @@
         }
         .internship-card::before { top: 10px; left: 10px; }
         .internship-card::after { bottom: 10px; right: 10px; }
- 
+
         .internship-header {
             display: flex;
             align-items: center;
@@ -407,7 +407,7 @@
             padding-bottom: 24px;
             border-bottom: 1px dashed var(--line);
         }
- 
+
         .company-logo {
             width: 130px;
             height: 130px;
@@ -417,7 +417,7 @@
             transition: transform 0.3s ease;
         }
         .internship-card:hover .company-logo { transform: scale(1.05); }
- 
+
         .internship-info .label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.72rem;
@@ -429,9 +429,9 @@
         }
         .internship-info h3 { color: var(--blueprint-deep); font-size: 1.4rem; margin-bottom: 4px; }
         .internship-info .company { color: var(--text-secondary); font-size: 1rem; }
- 
+
         .internship-description p.lead { font-weight: 600; color: var(--ink); margin-bottom: 12px; }
- 
+
         .internship-description ul { list-style: none; margin-top: 8px; }
         .internship-description li {
             padding-left: 26px;
@@ -449,9 +449,9 @@
             background: var(--amber);
             border-radius: 2px;
         }
- 
+
         .tools-used { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
- 
+
         .tool-badge {
             font-family: 'JetBrains Mono', monospace;
             background: var(--amber-soft);
@@ -462,7 +462,7 @@
             font-weight: 600;
             border: 1px solid rgba(224, 142, 45, 0.3);
         }
- 
+
         /* ---------- Certifications ---------- */
         .cert-grid {
             display: grid;
@@ -470,7 +470,7 @@
             gap: 22px;
             margin-top: 10px;
         }
- 
+
         .cert-card {
             background: var(--surface);
             padding: 26px 28px;
@@ -488,7 +488,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
- 
+
         /* ---------- Contact ---------- */
         .contact-content { max-width: 600px; margin: 0 auto; text-align: center; }
         .contact-buttons {
@@ -518,14 +518,14 @@
             border: 1.5px solid var(--blueprint-deep);
         }
         .contact-btn.secondary:hover { background: var(--blueprint-deep); color: white; }
- 
+
         .contact-icon {
             width: 22px;
             height: 22px;
             object-fit: contain;
             flex-shrink: 0;
         }
- 
+
         footer {
             background: var(--ink);
             padding: 28px 0;
@@ -535,11 +535,11 @@
             font-size: 0.8rem;
             letter-spacing: 0.5px;
         }
- 
+
         /* ---------- Fade-in on scroll ---------- */
         .fade-in { opacity: 0; transform: translateY(24px); transition: all 0.6s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
- 
+
         /* ---------- Responsive ---------- */
         @media (max-width: 768px) {
             section { padding: 70px 0; }
@@ -549,11 +549,11 @@
             .internship-card { padding: 26px; }
             .company-logo { width: 100px; height: 100px; }
         }
- 
+
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
- 
+
         a:focus-visible, .scroll-indicator:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
     </style>
 </head>
@@ -574,7 +574,7 @@
         </div>
         <div class="scroll-indicator" role="button" aria-label="Défiler vers le bas" tabindex="0"></div>
     </section>
- 
+
     <!-- About -->
     <section id="about">
         <div class="container">
@@ -587,7 +587,7 @@
             </div>
         </div>
     </section>
- 
+
     <!-- Compétences techniques -->
     <section id="shapes">
         <div class="container">
@@ -619,7 +619,7 @@
             </div>
         </div>
     </section>
- 
+
     <!-- Éducation — flux de processus -->
     <section id="education">
         <div class="container">
@@ -628,7 +628,7 @@
                 <h2>Éducation</h2>
             </div>
             <div class="education-timeline">
- 
+
                 <div class="flow-step fade-in">
                     <div class="flow-marker">
                         <span class="flow-tag">ÉTAPE 01</span>
@@ -640,7 +640,7 @@
                         <p class="desc">Diplôme du baccalauréat avec mention très bien | Taroudannt</p>
                     </div>
                 </div>
- 
+
                 <div class="flow-step fade-in">
                     <div class="flow-marker">
                         <span class="flow-tag">ÉTAPE 02</span>
@@ -652,7 +652,7 @@
                         <p class="desc">Classe préparatoire intégrée | Agadir</p>
                     </div>
                 </div>
- 
+
                 <div class="flow-step fade-in">
                     <div class="flow-marker">
                         <span class="flow-tag">ÉTAPE 03</span>
@@ -664,11 +664,11 @@
                         <p class="desc">Spécialité : Génie Industriel | Agadir</p>
                     </div>
                 </div>
- 
+
             </div>
         </div>
     </section>
- 
+
     <!-- Compétences et outils — icônes images -->
     <section id="skills">
         <div class="container">
@@ -724,7 +724,7 @@
             </div>
         </div>
     </section>
- 
+
     <!-- Stage -->
     <section id="internship">
         <div class="container">
@@ -757,7 +757,7 @@
             </div>
         </div>
     </section>
- 
+
     <!-- Certifications -->
     <section id="certifications">
         <div class="container">
@@ -781,7 +781,7 @@
             </div>
         </div>
     </section>
- 
+
     <!-- Contact -->
     <section id="contact">
         <div class="container">
@@ -806,13 +806,13 @@
             </div>
         </div>
     </section>
- 
+
     <footer>
         <div class="container">
             <p>&copy; 2025 Amouch Oussama — Tous droits réservés</p>
         </div>
     </footer>
- 
+
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -821,15 +821,15 @@
                 if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
- 
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
- 
+
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
- 
+
         const scrollBtn = document.querySelector('.scroll-indicator');
         scrollBtn.addEventListener('click', () => {
             document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
