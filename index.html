@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -409,14 +409,14 @@
         }
  
         .company-logo {
-            width: 96px;
-            height: 96px;
+            width: 130px;
+            height: 130px;
             object-fit: contain;
-            border-radius: 10px;
-            background: white;
-            padding: 14px;
-            border: 1px solid var(--line);
+            filter: drop-shadow(0 10px 22px rgba(22, 32, 44, 0.22));
+            animation: float 3.6s ease-in-out infinite;
+            transition: transform 0.3s ease;
         }
+        .internship-card:hover .company-logo { transform: scale(1.05); }
  
         .internship-info .label {
             font-family: 'JetBrains Mono', monospace;
@@ -547,6 +547,7 @@
             .flow-tag { font-size: 0.62rem; padding: 4px 5px; }
             .internship-header { flex-direction: column; align-items: flex-start; }
             .internship-card { padding: 26px; }
+            .company-logo { width: 100px; height: 100px; }
         }
  
         @media (prefers-reduced-motion: reduce) {
@@ -711,11 +712,7 @@
                 <div class="tool-card fade-in">
                     <div class="tool-icon"><img src="MATLAB.png" alt="MATLAB" onerror="this.parentElement.innerHTML='📐';"></div>
                     <h4>MATLAB</h4>
-                     </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="msproject.png" alt="MATLAB" onerror="this.parentElement.innerHTML='📐';"></div>
-                    <h4>MS Project</h4>
-                    </div>
+                </div>
                 <div class="tool-card fade-in">
                     <div class="tool-icon"><img src="catia.png" alt="CATIA" onerror="this.parentElement.innerHTML='🔧';"></div>
                     <h4>CATIA</h4>
