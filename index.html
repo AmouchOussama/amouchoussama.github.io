@@ -1,942 +1,468 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amouch Oussama — Portfolio Génie Industriel</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --ink: #16202c;
-            --ink-soft: #2a3949;
-            --paper: #eef1f0;
-            --surface: #ffffff;
-            --blueprint: #2c6079;
-            --blueprint-deep: #163a4d;
-            --amber: #e08e2d;
-            --amber-soft: rgba(224, 142, 45, 0.12);
-            --line: rgba(22, 32, 44, 0.14);
-            --text: #16202c;
-            --text-secondary: #59667a;
-            --grid-line: rgba(44, 96, 121, 0.08);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amouch Oussama — Portfolio Génie Industriel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --ink-soft:#1e293b; --paper:#f4f6f9; --surface:#ffffff;
+  --primary:#1d4ed8; --primary-deep:#0b1e3f; --accent:#0d9488; --accent-soft:rgba(13,148,136,.10);
+  --line:rgba(15,23,42,.10); --text:#0f172a; --text-secondary:#5b6678;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--paper);color:var(--text);line-height:1.6;overflow-x:hidden}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+.mono{font-family:'JetBrains Mono',monospace}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 20% 15%,rgba(29,78,216,.45),transparent 50%),radial-gradient(circle at 85% 85%,rgba(13,148,136,.30),transparent 45%),var(--primary-deep)}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(circle at 50% 40%,black 0%,transparent 75%)}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:#5eead4;text-align:center;margin-bottom:26px;opacity:0;animation:riseIn .7s ease-out .1s forwards}
+.hero-content{position:relative;z-index:1;text-align:center;color:#fff}
+.profile-container{display:flex;flex-direction:column;align-items:center;gap:30px}
+.profile-image{width:176px;height:176px;border-radius:50%;background:var(--surface);overflow:hidden;border:4px solid rgba(255,255,255,.25);box-shadow:0 20px 50px rgba(0,0,0,.4);opacity:0;animation:riseIn .8s ease-out .25s forwards,float 3.4s ease-in-out 1.2s infinite}
+.profile-image img{width:100%;height:100%;object-fit:cover;display:block}
+.profile-image.placeholder{display:flex;align-items:center;justify-content:center;font-size:60px}
+@keyframes riseIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-text h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:700;letter-spacing:-.5px;opacity:0;animation:riseIn .8s ease-out .4s forwards}
+.hero-text .subtitle{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:.95rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.7);opacity:0;animation:riseIn .8s ease-out .55s forwards}
+.scroll-indicator{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);width:26px;height:42px;border:2px solid rgba(255,255,255,.35);border-radius:14px;cursor:pointer}
+.scroll-indicator::after{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:4px;height:8px;background:#5eead4;border-radius:2px;animation:scrollDot 1.6s ease-in-out infinite}
+@keyframes scrollDot{0%{opacity:1;top:8px}60%,100%{opacity:0;top:22px}}
 
-        html { scroll-behavior: smooth; }
+/* Sections */
+section{padding:100px 0;position:relative}
+section:nth-child(even){background:var(--surface)}
+.section-head{margin-bottom:56px;text-align:center}
+.section-tag{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--primary);display:block;margin-bottom:10px}
+.section-icon{width:68px;height:68px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;background:var(--accent-soft);border:1px solid rgba(13,148,136,.25);border-radius:18px;animation:float 3.4s ease-in-out infinite}
+.section-icon img{width:38px;height:38px;object-fit:contain}
+h2{font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:700;color:var(--ink)}
+.about-content{max-width:720px;margin:0 auto;text-align:center;font-size:1.15rem;color:var(--text-secondary)}
 
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--paper);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+/* Compétences techniques */
+.shapes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.shape-card{position:relative;background:var(--surface);padding:32px 26px 28px;border-radius:16px;border:1px solid var(--line);overflow:hidden;transition:all .3s ease}
+.shape-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.shape-card:hover::before{transform:scaleX(1)}
+.shape-card:hover{transform:translateY(-8px);box-shadow:0 22px 44px rgba(29,78,216,.14);border-color:transparent}
+.shape-index{position:absolute;top:20px;right:22px;font-size:.72rem;color:var(--text-secondary);opacity:.45}
+.shape-icon{width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;background:var(--accent-soft);border-radius:14px;margin-bottom:20px;animation:float 3.2s ease-in-out infinite}
+.shape-card:nth-child(2n) .shape-icon{animation-delay:.4s}
+.shape-card:nth-child(3n) .shape-icon{animation-delay:.8s}
+.shape-card:nth-child(5n) .shape-icon{animation-delay:1.2s}
+.shape-card h3{font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:8px}
+.shape-desc{font-size:.87rem;color:var(--text-secondary);line-height:1.55}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;color:var(--primary);background:rgba(29,78,216,.08);border:1px solid rgba(29,78,216,.18);padding:3px 9px;border-radius:5px}
 
-        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+/* Éducation */
+.education-timeline{max-width:780px;margin:20px auto 0}
+.flow-step{display:grid;grid-template-columns:92px 1fr;position:relative}
+.flow-marker{display:flex;flex-direction:column;align-items:center}
+.flow-tag{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:600;color:#fff;background:var(--primary);border-radius:5px;padding:5px 8px;white-space:nowrap}
+.flow-connector{width:2px;flex:1;background:repeating-linear-gradient(to bottom,var(--line) 0 6px,transparent 6px 12px);margin-top:8px}
+.flow-step:last-child .flow-connector{display:none}
+.flow-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px 28px;margin-bottom:34px;transition:all .25s ease}
+.flow-card:hover{border-color:var(--primary);box-shadow:0 10px 26px rgba(29,78,216,.10);transform:translateX(4px)}
+.flow-card h3{color:var(--primary-deep);font-size:1.15rem;margin-bottom:4px}
+.flow-card .year{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:8px;display:block}
+.flow-card p.desc{color:var(--text-secondary);font-size:.95rem}
 
-        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+/* Outils */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:28px}
+.tool-card{background:var(--surface);padding:30px 16px 24px;border-radius:14px;text-align:center;border:1px solid var(--line);transition:all .3s ease}
+.tool-card:hover{transform:translateY(-8px);border-color:var(--primary);box-shadow:0 18px 38px rgba(29,78,216,.14)}
+.tool-icon{width:100%;height:84px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:2.6rem;animation:float 3.2s ease-in-out infinite}
+.tool-card:nth-child(2n) .tool-icon{animation-delay:.35s}
+.tool-card:nth-child(3n) .tool-icon{animation-delay:.7s}
+.tool-card:nth-child(4n) .tool-icon{animation-delay:1.05s}
+.tool-card:nth-child(5n) .tool-icon{animation-delay:1.4s}
+.tool-icon img{max-width:92px;max-height:84px;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(15,23,42,.15));transition:transform .3s ease}
+.tool-card:hover .tool-icon img{transform:scale(1.08)}
+.tool-card h4{font-size:.88rem;font-weight:600;color:var(--ink)}
 
-        .mono { font-family: 'JetBrains Mono', monospace; }
+/* Stage */
+.internship-card{max-width:860px;margin:10px auto 0;background:var(--surface);border-radius:12px;padding:40px;border:1px solid var(--line);border-top:3px solid var(--accent)}
+.internship-header{display:flex;align-items:center;gap:24px;margin-bottom:28px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px dashed var(--line)}
+.company-logo{width:150px;height:150px;object-fit:contain;filter:drop-shadow(0 10px 22px rgba(15,23,42,.22));animation:float 3.6s ease-in-out infinite;transition:transform .3s ease}
+.internship-card:hover .company-logo{transform:scale(1.05)}
+.internship-info .label{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px;font-weight:600}
+.internship-info h3{color:var(--primary-deep);font-size:1.4rem;margin-bottom:4px}
+.internship-info .company{color:var(--text-secondary)}
+.internship-description p.lead{font-weight:600;color:var(--ink);margin-bottom:12px}
+.internship-description ul{list-style:none;margin-top:8px}
+.internship-description li{padding-left:26px;margin-bottom:12px;position:relative;color:var(--text-secondary)}
+.internship-description li::before{content:'';position:absolute;left:0;top:7px;width:8px;height:8px;background:var(--accent);border-radius:2px}
+.tools-used{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.tool-badge{font-family:'JetBrains Mono',monospace;background:var(--accent-soft);color:var(--primary-deep);padding:6px 14px;border-radius:5px;font-size:.82rem;font-weight:600;border:1px solid rgba(13,148,136,.3)}
 
-        /* ---------- Corner-bracket signature element ---------- */
-        .bracket {
-            position: relative;
-        }
-        .bracket::before, .bracket::after {
-            content: '';
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            border-color: var(--amber);
-            border-style: solid;
-            border-width: 0;
-            z-index: 3;
-        }
-        .bracket::before {
-            top: -2px; left: -2px;
-            border-top-width: 3px;
-            border-left-width: 3px;
-        }
-        .bracket::after {
-            bottom: -2px; right: -2px;
-            border-bottom-width: 3px;
-            border-right-width: 3px;
-        }
+/* Galerie */
+.gallery{margin-top:30px;padding-top:24px;border-top:1px dashed var(--line)}
+.gallery h4{font-size:1.05rem;color:var(--primary-deep);margin-bottom:14px}
+.gallery-grid{display:grid;grid-template-columns:minmax(0,320px);gap:14px}
+.gallery-item:not(:first-child),.gallery-item.empty:not(:first-child){display:none}
+.gallery-item:first-child::before{content:attr(data-count);position:absolute;right:10px;bottom:10px;z-index:2;background:rgba(11,30,63,.85);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:4px 10px;border-radius:5px}
+.gallery-item{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:var(--paper);border:1px solid var(--line);cursor:zoom-in}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.gallery-item:hover img{transform:scale(1.06)}
+.gallery-item.empty{cursor:default;border-style:dashed;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;font-size:.78rem;color:var(--text-secondary)}
+.gallery-item.empty img{display:none}
+.gallery-item.empty::after{content:'Photo à ajouter';}
 
-        /* ---------- Hero ---------- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--blueprint-deep);
-            position: relative;
-            overflow: hidden;
-        }
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(11,30,63,.92);display:none;align-items:center;justify-content:center;z-index:100;padding:24px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(100%,1000px);max-height:86vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);cursor:default}
+.lb-btn{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lb-btn:hover{background:var(--accent)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lb-count{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.85rem}
+.lb-close{position:absolute;top:18px;right:20px;width:42px;height:42px;font-size:1.3rem;transform:none}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px);
-            background-size: 42px 42px;
-            mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 75%);
-        }
+/* Certifications */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.cert-card{background:var(--surface);padding:26px 28px;border-radius:10px;border:1px solid var(--line);border-left:3px solid var(--primary);transition:all .25s ease}
+.cert-card:hover{transform:translateX(6px);border-left-color:var(--accent)}
+.cert-card h3{color:var(--primary-deep);font-size:1.05rem;margin-bottom:10px}
+.cert-card .badge{font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-weight:600}
 
-        .hero-eyebrow {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--amber);
-            text-align: center;
-            margin-bottom: 26px;
-            opacity: 0;
-            animation: riseIn 0.7s ease-out 0.1s forwards;
-        }
+/* Contact */
+.contact-content{max-width:600px;margin:0 auto;text-align:center}
+.contact-buttons{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.contact-btn{display:inline-flex;align-items:center;gap:12px;padding:14px 32px;background:var(--primary);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;transition:all .25s ease}
+.contact-btn:hover{background:var(--primary-deep);transform:translateY(-3px)}
+.contact-btn.secondary{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
+.contact-btn.secondary:hover{background:var(--primary);color:#fff}
+.contact-icon{width:22px;height:22px;object-fit:contain;flex-shrink:0}
+footer{background:var(--primary-deep);padding:28px 0;text-align:center;color:rgba(255,255,255,.55);font-family:'JetBrains Mono',monospace;font-size:.8rem}
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: white;
-        }
+.fade-in{opacity:0;transform:translateY(24px);transition:all .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
 
-        .profile-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .profile-image {
-            width: 176px;
-            height: 176px;
-            border-radius: 50%;
-            background: var(--surface);
-            overflow: hidden;
-            border: 4px solid rgba(255,255,255,0.25);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-            opacity: 0;
-            animation: riseIn 0.8s ease-out 0.25s forwards, float 3.4s ease-in-out 1.2s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-14px); }
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .profile-image.placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-        }
-
-        @keyframes riseIn {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-text h1 {
-            font-size: clamp(2.2rem, 5vw, 3.4rem);
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            opacity: 0;
-            animation: riseIn 0.8s ease-out 0.4s forwards;
-        }
-
-        .hero-text .subtitle {
-            margin-top: 14px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.65);
-            opacity: 0;
-            animation: riseIn 0.8s ease-out 0.55s forwards;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 34px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 26px;
-            height: 42px;
-            border: 2px solid rgba(255,255,255,0.35);
-            border-radius: 14px;
-            cursor: pointer;
-        }
-        .scroll-indicator::after {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 8px;
-            background: var(--amber);
-            border-radius: 2px;
-            animation: scrollDot 1.6s ease-in-out infinite;
-        }
-        @keyframes scrollDot {
-            0% { opacity: 1; top: 8px; }
-            60% { opacity: 0; top: 22px; }
-            100% { opacity: 0; top: 22px; }
-        }
-
-        /* ---------- Sections ---------- */
-        section { padding: 100px 0; position: relative; }
-        section:nth-child(even) { background: var(--surface); }
-
-        .section-head { margin-bottom: 56px; text-align: center; }
-
-        .section-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--blueprint);
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .section-icon {
-            width: 68px;
-            height: 68px;
-            margin: 0 auto 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            background: var(--amber-soft);
-            border: 1px solid rgba(224, 142, 45, 0.25);
-            border-radius: 18px;
-            animation: float 3.4s ease-in-out infinite;
-        }
-        .section-icon img {
-            width: 38px;
-            height: 38px;
-            object-fit: contain;
-        }
-
-        h2 {
-            font-size: clamp(1.8rem, 3.4vw, 2.4rem);
-            font-weight: 700;
-            color: var(--ink);
-        }
-
-        /* ---------- About ---------- */
-        .about-content {
-            max-width: 720px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-        }
-
-        /* ---------- Skills icon grid (Compétences Techniques) — style premium ---------- */
-        .shapes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 24px;
-            margin-top: 10px;
-        }
-
-        .shape-card {
-            position: relative;
-            background: var(--surface);
-            padding: 32px 26px 28px;
-            border-radius: 16px;
-            text-align: left;
-            border: 1px solid var(--line);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .shape-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--blueprint), var(--amber));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.35s ease;
-        }
-        .shape-card:hover::before { transform: scaleX(1); }
-        .shape-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 22px 44px rgba(44, 96, 121, 0.16);
-            border-color: transparent;
-        }
-
-        .shape-index {
-            position: absolute;
-            top: 20px;
-            right: 22px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            color: var(--text-secondary);
-            opacity: 0.45;
-        }
-
-        .shape-icon {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            background: var(--amber-soft);
-            border-radius: 14px;
-            margin-bottom: 20px;
-            animation: float 3.2s ease-in-out infinite;
-        }
-        .shape-card:nth-child(2n) .shape-icon { animation-delay: 0.4s; }
-        .shape-card:nth-child(3n) .shape-icon { animation-delay: 0.8s; }
-        .shape-card:nth-child(5n) .shape-icon { animation-delay: 1.2s; }
-
-        .shape-card h3 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 8px;
-        }
-        .shape-card p.shape-desc {
-            font-size: 0.87rem;
-            color: var(--text-secondary);
-            line-height: 1.55;
-        }
-
-        /* ---------- Education — process-flow timeline ---------- */
-        .education-timeline {
-            max-width: 780px;
-            margin: 20px auto 0;
-        }
-
-        .flow-step {
-            display: grid;
-            grid-template-columns: 92px 1fr;
-            gap: 0;
-            position: relative;
-        }
-
-        .flow-marker {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .flow-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: white;
-            background: var(--blueprint);
-            border-radius: 5px;
-            padding: 5px 8px;
-            white-space: nowrap;
-        }
-
-        .flow-connector {
-            width: 2px;
-            flex: 1;
-            background: repeating-linear-gradient(to bottom, var(--line) 0 6px, transparent 6px 12px);
-            margin-top: 8px;
-        }
-
-        .flow-step:last-child .flow-connector { display: none; }
-
-        .flow-card {
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            padding: 24px 28px;
-            margin-bottom: 34px;
-            transition: all 0.25s ease;
-        }
-        .flow-card:hover {
-            border-color: var(--blueprint);
-            box-shadow: 0 10px 26px rgba(44, 96, 121, 0.1);
-            transform: translateX(4px);
-        }
-
-        .flow-card h3 { color: var(--blueprint-deep); font-size: 1.15rem; margin-bottom: 4px; }
-        .flow-card .year {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--amber);
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-        }
-        .flow-card p.desc { color: var(--text-secondary); font-size: 0.95rem; }
-
-        /* ---------- Tools grid (icônes plus grandes, sans fond, style premium) ---------- */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 28px;
-            margin-top: 10px;
-        }
-
-        .tool-card {
-            background: var(--surface);
-            padding: 30px 16px 24px;
-            border-radius: 14px;
-            text-align: center;
-            border: 1px solid var(--line);
-            transition: all 0.3s ease;
-        }
-        .tool-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--blueprint);
-            box-shadow: 0 18px 38px rgba(44, 96, 121, 0.16);
-        }
-
-        .tool-icon {
-            width: 100%;
-            height: 84px;
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.6rem;
-            animation: float 3.2s ease-in-out infinite;
-        }
-        .tool-icon img {
-            max-width: 92px;
-            max-height: 84px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 6px 14px rgba(22, 32, 44, 0.15));
-            transition: transform 0.3s ease;
-        }
-        .tool-card:hover .tool-icon img { transform: scale(1.08); }
-
-        .tool-card:nth-child(2n) .tool-icon { animation-delay: 0.35s; }
-        .tool-card:nth-child(3n) .tool-icon { animation-delay: 0.7s; }
-        .tool-card:nth-child(4n) .tool-icon { animation-delay: 1.05s; }
-        .tool-card:nth-child(5n) .tool-icon { animation-delay: 1.4s; }
-
-        .tool-card h4 {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--ink);
-            letter-spacing: 0.3px;
-        }
-
-        /* ---------- Internship — spec sheet card ---------- */
-        .internship-card {
-            max-width: 860px;
-            margin: 10px auto 0;
-            background: var(--surface);
-            border-radius: 12px;
-            padding: 40px;
-            border: 1px solid var(--line);
-            position: relative;
-        }
-        .internship-card::before { top: 10px; left: 10px; }
-        .internship-card::after { bottom: 10px; right: 10px; }
-
-        .internship-header {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            margin-bottom: 28px;
-            flex-wrap: wrap;
-            padding-bottom: 24px;
-            border-bottom: 1px dashed var(--line);
-        }
-
-        .company-logo {
-            width: 150px;
-            height: 150px;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 22px rgba(22, 32, 44, 0.22));
-            animation: float 3.6s ease-in-out infinite;
-            transition: transform 0.3s ease;
-        }
-        .internship-card:hover .company-logo { transform: scale(1.05); }
-
-        .internship-info .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--amber);
-            display: block;
-            margin-bottom: 6px;
-        }
-        .internship-info h3 { color: var(--blueprint-deep); font-size: 1.4rem; margin-bottom: 4px; }
-        .internship-info .company { color: var(--text-secondary); font-size: 1rem; }
-
-        .internship-description p.lead { font-weight: 600; color: var(--ink); margin-bottom: 12px; }
-
-        .internship-description ul { list-style: none; margin-top: 8px; }
-        .internship-description li {
-            padding-left: 26px;
-            margin-bottom: 12px;
-            position: relative;
-            color: var(--text-secondary);
-        }
-        .internship-description li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 7px;
-            width: 8px;
-            height: 8px;
-            background: var(--amber);
-            border-radius: 2px;
-        }
-
-        .tools-used { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
-
-        .tool-badge {
-            font-family: 'JetBrains Mono', monospace;
-            background: var(--amber-soft);
-            color: var(--blueprint-deep);
-            padding: 6px 14px;
-            border-radius: 5px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            border: 1px solid rgba(224, 142, 45, 0.3);
-        }
-
-        /* ---------- Certifications ---------- */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 22px;
-            margin-top: 10px;
-        }
-
-        .cert-card {
-            background: var(--surface);
-            padding: 26px 28px;
-            border-radius: 10px;
-            border: 1px solid var(--line);
-            border-left: 3px solid var(--blueprint);
-            transition: all 0.25s ease;
-        }
-        .cert-card:hover { transform: translateX(6px); border-left-color: var(--amber); }
-        .cert-card h3 { color: var(--blueprint-deep); font-size: 1.05rem; margin-bottom: 10px; }
-        .cert-card .badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--amber);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* ---------- Contact ---------- */
-        .contact-content { max-width: 600px; margin: 0 auto; text-align: center; }
-        .contact-buttons {
-            display: flex;
-            gap: 18px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 36px;
-        }
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 32px;
-            background: var(--blueprint-deep);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.25s ease;
-        }
-        .contact-btn:hover { background: var(--amber); transform: translateY(-3px); }
-        .contact-btn.secondary {
-            background: transparent;
-            color: var(--blueprint-deep);
-            border: 1.5px solid var(--blueprint-deep);
-        }
-        .contact-btn.secondary:hover { background: var(--blueprint-deep); color: white; }
-
-        .contact-icon {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-
-        footer {
-            background: var(--ink);
-            padding: 28px 0;
-            text-align: center;
-            color: rgba(255,255,255,0.5);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
-        }
-
-        /* ---------- Fade-in on scroll ---------- */
-        .fade-in { opacity: 0; transform: translateY(24px); transition: all 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* ---------- Responsive ---------- */
-        @media (max-width: 768px) {
-            section { padding: 70px 0; }
-            .flow-step { grid-template-columns: 64px 1fr; }
-            .flow-tag { font-size: 0.62rem; padding: 4px 5px; }
-            .internship-header { flex-direction: column; align-items: flex-start; }
-            .internship-card { padding: 26px; }
-            .company-logo { width: 100px; height: 100px; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-        }
-
-        a:focus-visible, .scroll-indicator:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
-    </style>
+@media (max-width:768px){
+  section{padding:70px 0}
+  .flow-step{grid-template-columns:64px 1fr}
+  .flow-tag{font-size:.62rem;padding:4px 5px}
+  .internship-header{flex-direction:column;align-items:flex-start}
+  .internship-card{padding:26px}
+  .company-logo{width:100px;height:100px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+a:focus-visible,.scroll-indicator:focus-visible,.gallery-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
 </head>
 <body>
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <p class="hero-eyebrow">Génie Industriel · Promotion 2027</p>
-            <div class="profile-container">
-                <div class="profile-image placeholder">
-                    <img src="photo.jpg" alt="Photo de profil" onerror="this.style.display='none'; this.parentElement.innerHTML='📷';">
-                </div>
-                <div class="hero-text">
-                    <h1>Amouch Oussama</h1>
-                    <p class="subtitle">Élève ingénieur · A la recherche d'un Stage PFE</p>
-                </div>
-            </div>
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Génie Industriel · Promotion 2027</p>
+    <div class="profile-container">
+      <div class="profile-image placeholder">
+        <img src="photo.jpg" alt="Photo de profil" onerror="this.style.display='none'; this.parentElement.innerHTML='📷';">
+      </div>
+      <div class="hero-text">
+        <h1>Amouch Oussama</h1>
+        <p class="subtitle">Élève ingénieur · A la recherche d'un Stage PFE</p>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator" role="button" aria-label="Défiler vers le bas" tabindex="0"></div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag mono">01 · Profil</span>
+      <div class="section-icon"><img src="about.png" alt="À propos" onerror="this.parentElement.innerHTML='🧑‍🎓';"></div>
+      <h2>À Propos de Moi</h2>
+    </div>
+    <div class="about-content fade-in">
+      <p>Étudiant en génie industriel passionné par l'optimisation des processus, l'amélioration continue et la logistique, je possède de solides compétences en analyse et en résolution de problèmes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="shapes">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag mono">02 · Domaines</span>
+      <div class="section-icon"><img src="skills-tech.png" alt="Compétences techniques" onerror="this.parentElement.innerHTML='⚙️';"></div>
+      <h2>Compétences Techniques</h2>
+    </div>
+    <div class="shapes-grid">
+      <div class="shape-card fade-in">
+        <span class="shape-index mono">01</span>
+        <div class="shape-icon">📊</div>
+        <h3>Lean Six Sigma</h3>
+        <p class="shape-desc">Réduction des variations et élimination du gaspillage dans les processus.</p>
+      </div>
+      <div class="shape-card fade-in">
+        <span class="shape-index mono">02</span>
+        <div class="shape-icon">🚚</div>
+        <h3>Supply Chain</h3>
+        <p class="shape-desc">Optimisation des flux logistiques et de la chaîne d'approvisionnement.</p>
+      </div>
+      <div class="shape-card fade-in">
+        <span class="shape-index mono">03</span>
+        <div class="shape-icon">📈</div>
+        <h3>Amélioration Continue</h3>
+        <p class="shape-desc">Kaizen, PDCA et résolution structurée de problèmes.</p>
+      </div>
+      <div class="shape-card fade-in">
+        <span class="shape-index mono">04</span>
+        <div class="shape-icon">🏭</div>
+        <h3>Gestion de Production</h3>
+        <p class="shape-desc">Planification, pilotage et suivi des ateliers de fabrication.</p>
+      </div>
+      <div class="shape-card fade-in">
+        <span class="shape-index mono">05</span>
+        <div class="shape-icon">📋</div>
+        <h3>Gestion de Projets</h3>
+        <p class="shape-desc">Coordination des équipes, des délais et des livrables.</p>
+      </div>
+      <div class="shape-card fade-in">
+        <span class="shape-index mono">06</span>
+        <div class="shape-icon">✅</div>
+        <h3>Management de la Qualité</h3>
+        <p class="shape-desc">ISO 9001 : norme internationale des systèmes de management de la qualité. Approche processus, satisfaction client, maîtrise des risques et amélioration continue (PDCA).</p>
+        <div class="chips"><span class="chip">ISO 9001</span><span class="chip">Audit</span><span class="chip">Processus</span></div>
+      </div>
+      <div class="shape-card fade-in">
+        <span class="shape-index mono">07</span>
+        <div class="shape-icon">🛠️</div>
+        <h3>Management de la Maintenance</h3>
+        <p class="shape-desc">Organisation et pilotage de la maintenance pour maximiser la disponibilité et la fiabilité des équipements.</p>
+        <div class="chips"><span class="chip">Corrective</span><span class="chip">Préventive</span><span class="chip">Prédictive</span><span class="chip">Maintenance 4.0</span><span class="chip">TPM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag mono">03 · Parcours</span>
+      <div class="section-icon"><img src="education.png" alt="Éducation" onerror="this.parentElement.innerHTML='🎓';"></div>
+      <h2>Éducation</h2>
+    </div>
+    <div class="education-timeline">
+      <div class="flow-step fade-in">
+        <div class="flow-marker"><span class="flow-tag">ÉTAPE 01</span><div class="flow-connector"></div></div>
+        <div class="flow-card">
+          <span class="year">2021 — 2022</span>
+          <h3>Baccalauréat</h3>
+          <p class="desc">Diplôme du baccalauréat avec mention très bien | Taroudannt</p>
         </div>
-        <div class="scroll-indicator" role="button" aria-label="Défiler vers le bas" tabindex="0"></div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-        <div class="container">
-            <div class="section-head">
-                <span class="section-tag mono">01 · Profil</span>
-                <div class="section-icon"><img src="about.png" alt="À propos" onerror="this.parentElement.innerHTML='🧑‍🎓';"></div>
-                <h2>À Propos de Moi</h2>
-            </div>
-            <div class="about-content fade-in">
-                <p>Étudiant en génie industriel passionné par l'optimisation des processus, l'amélioration continue et la logistique, je possède de solides compétences en analyse et en résolution de problèmes.</p>
-            </div>
+      </div>
+      <div class="flow-step fade-in">
+        <div class="flow-marker"><span class="flow-tag">ÉTAPE 02</span><div class="flow-connector"></div></div>
+        <div class="flow-card">
+          <span class="year">2022 — 2024</span>
+          <h3>Cycle Préparatoire</h3>
+          <p class="desc">Classe préparatoire intégrée | Agadir</p>
         </div>
-    </section>
-
-    <!-- Compétences techniques -->
-    <section id="shapes">
-        <div class="container">
-            <div class="section-head">
-                <span class="section-tag mono">02 · Domaines</span>
-                <div class="section-icon"><img src="skills-tech.png" alt="Compétences techniques" onerror="this.parentElement.innerHTML='⚙️';"></div>
-                <h2>Compétences Techniques</h2>
-            </div>
-            <div class="shapes-grid">
-                <div class="shape-card fade-in">
-                    <span class="shape-index mono">01</span>
-                    <div class="shape-icon">📊</div>
-                    <h3>Lean Six Sigma</h3>
-                    <p class="shape-desc">Réduction des variations et élimination du gaspillage dans les processus.</p>
-                </div>
-                <div class="shape-card fade-in">
-                    <span class="shape-index mono">02</span>
-                    <div class="shape-icon">🚚</div>
-                    <h3>Supply Chain</h3>
-                    <p class="shape-desc">Optimisation des flux logistiques et de la chaîne d'approvisionnement.</p>
-                </div>
-                <div class="shape-card fade-in">
-                    <span class="shape-index mono">03</span>
-                    <div class="shape-icon">📈</div>
-                    <h3>Amélioration Continue</h3>
-                    <p class="shape-desc">Kaizen, PDCA et résolution structurée de problèmes.</p>
-                </div>
-                <div class="shape-card fade-in">
-                    <span class="shape-index mono">04</span>
-                    <div class="shape-icon">🏭</div>
-                    <h3>Gestion de Production</h3>
-                    <p class="shape-desc">Planification, pilotage et suivi des ateliers de fabrication.</p>
-                </div>
-                <div class="shape-card fade-in">
-                    <span class="shape-index mono">05</span>
-                    <div class="shape-icon">📋</div>
-                    <h3>Gestion de Projets</h3>
-                    <p class="shape-desc">Coordination des équipes, des délais et des livrables.</p>
-                </div>
-            </div>
+      </div>
+      <div class="flow-step fade-in">
+        <div class="flow-marker"><span class="flow-tag">ÉTAPE 03</span><div class="flow-connector"></div></div>
+        <div class="flow-card">
+          <span class="year">2024 — 2027</span>
+          <h3>Cycle d'Ingénieur</h3>
+          <p class="desc">Spécialité : Génie Industriel | Agadir</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Éducation — flux de processus -->
-    <section id="education">
-        <div class="container">
-            <div class="section-head">
-                <span class="section-tag mono">03 · Parcours</span>
-                <div class="section-icon"><img src="education.png" alt="Éducation" onerror="this.parentElement.innerHTML='🎓';"></div>
-                <h2>Éducation</h2>
-            </div>
-            <div class="education-timeline">
+<section id="skills">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag mono">04 · Boîte à Outils</span>
+      <div class="section-icon"><img src="competence.png" alt="Compétences et outils" onerror="this.parentElement.innerHTML='🧰';"></div>
+      <h2>Compétences et Outils</h2>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="icons8-sap-logo-100.png" alt="SAP" onerror="this.parentElement.innerHTML='🏢';"></div><h4>ERP/SAP</h4></div>
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="powerbi.png" alt="Power BI" onerror="this.parentElement.innerHTML='📊';"></div><h4>Power BI</h4></div>
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="excel.png" alt="Excel" onerror="this.parentElement.innerHTML='📗';"></div><h4>Excel</h4></div>
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="msproject.png" alt="MS project" onerror="this.parentElement.innerHTML='📅';"></div><h4>Ms Project</h4></div>
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="TeX.png" alt="LaTeX" onerror="this.parentElement.innerHTML='📝';"></div><h4>LaTeX</h4></div>
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="powerpoint.png" alt="PowerPoint" onerror="this.parentElement.innerHTML='📑';"></div><h4>PowerPoint</h4></div>
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="word.png" alt="Word" onerror="this.parentElement.innerHTML='📄';"></div><h4>Word</h4></div>
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="python.png" alt="Python" onerror="this.parentElement.innerHTML='🐍';"></div><h4>Python</h4></div>
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="Java.png" alt="Java" onerror="this.parentElement.innerHTML='☕';"></div><h4>Java</h4></div>
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="MATLAB.png" alt="MATLAB" onerror="this.parentElement.innerHTML='📐';"></div><h4>MATLAB</h4></div>
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="catia.png" alt="CATIA" onerror="this.parentElement.innerHTML='🔧';"></div><h4>CATIA</h4></div>
+      <div class="tool-card fade-in"><div class="tool-icon"><img src="Vscode.png" alt="VS Code" onerror="this.parentElement.innerHTML='💻';"></div><h4>VS Code</h4></div>
+    </div>
+  </div>
+</section>
 
-                <div class="flow-step fade-in">
-                    <div class="flow-marker">
-                        <span class="flow-tag">ÉTAPE 01</span>
-                        <div class="flow-connector"></div>
-                    </div>
-                    <div class="flow-card">
-                        <span class="year">2021 — 2022</span>
-                        <h3>Baccalauréat</h3>
-                        <p class="desc">Diplôme du baccalauréat avec mention très bien | Taroudannt</p>
-                    </div>
-                </div>
+<section id="internship">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag mono">05 · Expérience</span>
+      <div class="section-icon"><img src="internship.png" alt="Stage" onerror="this.parentElement.innerHTML='💼';"></div>
+      <h2>Stage</h2>
+    </div>
 
-                <div class="flow-step fade-in">
-                    <div class="flow-marker">
-                        <span class="flow-tag">ÉTAPE 02</span>
-                        <div class="flow-connector"></div>
-                    </div>
-                    <div class="flow-card">
-                        <span class="year">2022 — 2024</span>
-                        <h3>Cycle Préparatoire</h3>
-                        <p class="desc">Classe préparatoire intégrée | Agadir</p>
-                    </div>
-                </div>
-
-                <div class="flow-step fade-in">
-                    <div class="flow-marker">
-                        <span class="flow-tag">ÉTAPE 03</span>
-                        <div class="flow-connector"></div>
-                    </div>
-                    <div class="flow-card">
-                        <span class="year">2024 — 2027</span>
-                        <h3>Cycle d'Ingénieur</h3>
-                        <p class="desc">Spécialité : Génie Industriel | Agadir</p>
-                    </div>
-                </div>
-
-            </div>
+    <!-- PFA1 -->
+    <div class="internship-card fade-in">
+      <div class="internship-header">
+        <img src="jayda.png" alt="Logo Jayda" class="company-logo" onerror="this.style.display='none';">
+        <div class="internship-info">
+          <span class="label mono">PFA1</span>
+          <h3>Stage d'observation et d'amélioration continue</h3>
+          <p class="company">Jayda</p>
         </div>
-    </section>
-
-    <!-- Compétences et outils — icônes images -->
-    <section id="skills">
-        <div class="container">
-            <div class="section-head">
-                <span class="section-tag mono">04 · Boîte à Outils</span>
-                <div class="section-icon"><img src="competence.png" alt="Compétences et outils" onerror="this.parentElement.innerHTML='🧰';"></div>
-                <h2>Compétences et Outils</h2>
-            </div>
-            <div class="tools-grid">
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="icons8-sap-logo-100.png" alt="SAP" onerror="this.parentElement.innerHTML='🏢';"></div>
-                    <h4>ERP/SAP</h4>
-                </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="powerbi.png" alt="Power BI" onerror="this.parentElement.innerHTML='📊';"></div>
-                    <h4>Power BI</h4>
-                </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="excel.png" alt="Excel" onerror="this.parentElement.innerHTML='📗';"></div>
-                    <h4>Excel</h4>
-                </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="msproject.png" alt="MS project" onerror="this.parentElement.innerHTML='📅';"></div>
-                    <h4>Ms Project</h4>
-                </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="TeX.png" alt="LaTeX" onerror="this.parentElement.innerHTML='📝';"></div>
-                    <h4>LaTeX</h4>
-                </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="powerpoint.png" alt="PowerPoint" onerror="this.parentElement.innerHTML='📑';"></div>
-                    <h4>PowerPoint</h4>
-                </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="word.png" alt="Word" onerror="this.parentElement.innerHTML='📄';"></div>
-                    <h4>Word</h4>
-                </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="python.png" alt="Python" onerror="this.parentElement.innerHTML='🐍';"></div>
-                    <h4>Python</h4>
-                </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="Java.png" alt="Java" onerror="this.parentElement.innerHTML='☕';"></div>
-                    <h4>Java</h4>
-                </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="MATLAB.png" alt="MATLAB" onerror="this.parentElement.innerHTML='📐';"></div>
-                    <h4>MATLAB</h4>
-                </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="catia.png" alt="CATIA" onerror="this.parentElement.innerHTML='🔧';"></div>
-                    <h4>CATIA</h4>
-                </div>
-                <div class="tool-card fade-in">
-                    <div class="tool-icon"><img src="Vscode.png" alt="VS Code" onerror="this.parentElement.innerHTML='💻';"></div>
-                    <h4>VS Code</h4>
-                </div>
-            </div>
+      </div>
+      <div class="internship-description">
+        <p class="lead">Description du stage :</p>
+        <ul>
+          <li>Observation et compréhension du fonctionnement des différents ateliers de production (abattage, désossage, découpe)</li>
+          <li>Réalisation d'études sur l'amélioration continue et la gestion des flux</li>
+          <li>Utilisation d'outils d'amélioration continue</li>
+        </ul>
+      </div>
+      <div class="tools-used">
+        <span class="tool-badge">5S</span><span class="tool-badge">PDCA</span><span class="tool-badge">DMAIC</span>
+      </div>
+      <div class="gallery">
+        <h4>Galerie</h4>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-count="1 / 3 · voir les photos" tabindex="0"><img src="jayda-1.jpg" alt="Stage Jayda — photo 1" onerror="this.parentElement.classList.add('empty')"></div>
+          <div class="gallery-item" tabindex="0"><img src="jayda-2.jpg" alt="Stage Jayda — photo 2" onerror="this.parentElement.classList.add('empty')"></div>
+          <div class="gallery-item" tabindex="0"><img src="jayda-3.jpg" alt="Stage Jayda — photo 3" onerror="this.parentElement.classList.add('empty')"></div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Stage -->
-    <section id="internship">
-        <div class="container">
-            <div class="section-head">
-                <span class="section-tag mono">05 · Expérience</span>
-                <div class="section-icon"><img src="internship.png" alt="Stage" onerror="this.parentElement.innerHTML='💼';"></div>
-                <h2>Stage</h2>
-            </div>
-            <div class="internship-card bracket fade-in">
-                <div class="internship-header">
-                    <img src="jayda.png" alt="Logo Jayda" class="company-logo" onerror="this.style.display='none';">
-                    <div class="internship-info">
-                        <span class="label mono">PFA1</span>
-                        <h3>Stage d'observation et d'amélioration continue</h3>
-                        <p class="company">Jayda</p>
-                    </div>
-                </div>
-                <div class="internship-description">
-                    <p class="lead">Description du stage :</p>
-                    <ul>
-                        <li>Observation et compréhension du fonctionnement des différents ateliers de production (abattage, désossage, découpe)</li>
-                        <li>Réalisation d'études sur l'amélioration continue et la gestion des flux</li>
-                        <li>Utilisation d'outils d'amélioration continue</li>
-                    </ul>
-                </div>
-                <div class="tools-used">
-                    <span class="tool-badge">5S</span>
-                    <span class="tool-badge">PDCA</span>
-                    <span class="tool-badge">DMAIC</span>
-                </div>
-            </div>
-
-            <div class="internship-card bracket fade-in" style="margin-top: 34px;">
-                <div class="internship-header">
-                    <img src="fujikura.png" alt="Logo Fujikura" class="company-logo" onerror="this.style.display='none';">
-                    <div class="internship-info">
-                        <span class="label mono">PFA2</span>
-                        <h3>Stage d'application en service logistique</h3>
-                        <p class="company">Fujikura</p>
-                    </div>
-                </div>
-                <div class="internship-description">
-                    <p class="lead">Description du stage :</p>
-                    <ul>
-                        <li>Analyse et cartographie des processus logistiques liés aux opérations d'importation, d'exportation et de transport national</li>
-                        <li>Automatisation du reporting hebdomadaire par le développement d'une macro VBA sous Outlook, permettant l'extraction automatique des données des e-mails vers Excel</li>
-                        <li>Conception d'un tableau de bord interactif sous Power BI pour le suivi des coûts, du volume des opérations, des fournisseurs, des projets et des opérations Regular/Special</li>
-                        <li>Analyse de la performance logistique et amélioration continue : identification des problèmes, analyse des causes par la méthode des 5 Pourquoi, analyse de Pareto et élaboration d'un plan d'action Lean</li>
-                    </ul>
-                </div>
-                <div class="tools-used">
-                    <span class="tool-badge">Power BI</span>
-                    <span class="tool-badge">VBA</span>
-                    <span class="tool-badge">5 Pourquoi</span>
-                </div>
-            </div>
+    <!-- PFA2 -->
+    <div class="internship-card fade-in" style="margin-top:34px;">
+      <div class="internship-header">
+        <img src="fujikura.png" alt="Logo Fujikura" class="company-logo" onerror="this.style.display='none';">
+        <div class="internship-info">
+          <span class="label mono">PFA2</span>
+          <h3>Stage d'application en service logistique</h3>
+          <p class="company">Fujikura</p>
         </div>
-    </section>
-
-    <!-- Certifications -->
-    <section id="certifications">
-        <div class="container">
-            <div class="section-head">
-                <span class="section-tag mono">06 · Validation</span>
-                <div class="section-icon"><img src="certifications.png" alt="Certifications" onerror="this.parentElement.innerHTML='📜';"></div>
-                <h2>Certifications</h2>
-            </div>
-            <div class="cert-grid">
-                <div class="cert-card fade-in">
-                    <h3>Lean/Six Sigma White Belt</h3>
-                    <span class="badge mono">Certifié</span>
-                </div>
-                <div class="cert-card fade-in">
-                    <h3>Process Management</h3>
-                    <span class="badge mono">Coursera</span>
-                </div>
-                <div class="cert-card fade-in">
-                    <h3>Supply Chain Analyst</h3>
-                    <span class="badge mono">Certifié</span>
-                </div>
-            </div>
+      </div>
+      <div class="internship-description">
+        <p class="lead">Description du stage :</p>
+        <ul>
+          <li>Analyse et cartographie des processus logistiques liés aux opérations d'importation, d'exportation et de transport national</li>
+          <li>Automatisation du reporting hebdomadaire par le développement d'une macro VBA sous Outlook, permettant l'extraction automatique des données des e-mails vers Excel</li>
+          <li>Conception d'un tableau de bord interactif sous Power BI pour le suivi des coûts, du volume des opérations, des fournisseurs, des projets et des opérations Regular/Special</li>
+          <li>Analyse de la performance logistique et amélioration continue : identification des problèmes, analyse des causes par la méthode des 5 Pourquoi, analyse de Pareto et élaboration d'un plan d'action Lean</li>
+        </ul>
+      </div>
+      <div class="tools-used">
+        <span class="tool-badge">Power BI</span><span class="tool-badge">VBA</span><span class="tool-badge">5 Pourquoi</span>
+      </div>
+      <div class="gallery">
+        <h4>Galerie</h4>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-count="1 / 3 · voir les photos" tabindex="0"><img src="fujikura-1.jpg" alt="Stage Fujikura — photo 1" onerror="this.parentElement.classList.add('empty')"></div>
+          <div class="gallery-item" tabindex="0"><img src="fujikura-2.jpg" alt="Stage Fujikura — photo 2" onerror="this.parentElement.classList.add('empty')"></div>
+          <div class="gallery-item" tabindex="0"><img src="fujikura-3.jpg" alt="Stage Fujikura — photo 3" onerror="this.parentElement.classList.add('empty')"></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Contact -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-head">
-                <span class="section-tag mono">07 · Contact</span>
-                <div class="section-icon"><img src="contact.png" alt="Contact" onerror="this.parentElement.innerHTML='💬';"></div>
-                <h2>Discutons</h2>
-            </div>
-            <div class="contact-content">
-                <p style="font-size: 1.05rem; color: var(--text-secondary);">
-                    N'hésitez pas à me contacter pour discuter de projets, d'opportunités ou simplement pour échanger !
-                </p>
-                <div class="contact-buttons">
-                    <a href="https://www.linkedin.com/in/amouchoussama" target="_blank" class="contact-btn">
-                        <img src="linkedin.png" alt="LinkedIn" class="contact-icon" onerror="this.outerHTML='<span>💼</span>';">
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="mailto:amouchoussamaa@gmail.com" class="contact-btn secondary">
-                        <img src="gmail.png" alt="Gmail" class="contact-icon" onerror="this.outerHTML='<span>✉️</span>';">
-                        <span>Me Contacter</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="certifications">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag mono">06 · Validation</span>
+      <div class="section-icon"><img src="certifications.png" alt="Certifications" onerror="this.parentElement.innerHTML='📜';"></div>
+      <h2>Certifications</h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card fade-in"><h3>Lean/Six Sigma White Belt</h3><span class="badge mono">Certifié</span></div>
+      <div class="cert-card fade-in"><h3>Process Management</h3><span class="badge mono">Coursera</span></div>
+      <div class="cert-card fade-in"><h3>Supply Chain Analyst</h3><span class="badge mono">Certifié</span></div>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Amouch Oussama — Tous droits réservés</p>
-        </div>
-    </footer>
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag mono">07 · Contact</span>
+      <div class="section-icon"><img src="contact.png" alt="Contact" onerror="this.parentElement.innerHTML='💬';"></div>
+      <h2>Discutons</h2>
+    </div>
+    <div class="contact-content">
+      <p style="font-size:1.05rem;color:var(--text-secondary);">N'hésitez pas à me contacter pour discuter de projets, d'opportunités ou simplement pour échanger !</p>
+      <div class="contact-buttons">
+        <a href="https://www.linkedin.com/in/amouchoussama" target="_blank" rel="noopener" class="contact-btn">
+          <img src="linkedin.png" alt="LinkedIn" class="contact-icon" onerror="this.outerHTML='<span>💼</span>';"><span>LinkedIn</span>
+        </a>
+        <a href="mailto:amouchoussamaa@gmail.com" class="contact-btn secondary">
+          <img src="gmail.png" alt="Gmail" class="contact-icon" onerror="this.outerHTML='<span>✉️</span>';"><span>Me Contacter</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
+<footer><div class="container"><p>&copy; 2026 Amouch Oussama — Tous droits réservés</p></div></footer>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Galerie photos">
+  <button class="lb-btn lb-close" aria-label="Fermer">✕</button>
+  <button class="lb-btn lb-prev" aria-label="Photo précédente">‹</button>
+  <img src="" alt="">
+  <button class="lb-btn lb-next" aria-label="Photo suivante">›</button>
+  <span class="lb-count"></span>
+</div>
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+<script>
+const observer = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: .1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        const scrollBtn = document.querySelector('.scroll-indicator');
-        scrollBtn.addEventListener('click', () => {
-            document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
-        });
-        scrollBtn.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') scrollBtn.click();
-        });
-    </script>
+const scrollBtn = document.querySelector('.scroll-indicator');
+scrollBtn.addEventListener('click', () => document.querySelector('#about').scrollIntoView({ behavior: 'smooth' }));
+scrollBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollBtn.click(); } });
+
+// Galerie : une vignette, navigation dans la visionneuse
+const lb = document.getElementById('lightbox'), lbImg = lb.querySelector('img'), lbCount = lb.querySelector('.lb-count');
+let group = [], idx = 0;
+function show() {
+  const img = group[idx].querySelector('img');
+  lbImg.src = img.src; lbImg.alt = img.alt;
+  lbCount.textContent = (idx + 1) + ' / ' + group.length;
+}
+function step(d) { if (!lb.classList.contains('open')) return; idx = (idx + d + group.length) % group.length; show(); }
+function openGallery(gallery) {
+  group = [...gallery.querySelectorAll('.gallery-item:not(.empty)')];
+  if (!group.length) return;
+  idx = 0; show(); lb.classList.add('open');
+}
+document.querySelectorAll('.gallery').forEach(g => {
+  const cover = g.querySelector('.gallery-item');
+  cover.addEventListener('click', () => openGallery(g));
+  cover.addEventListener('keydown', e => { if (e.key === 'Enter') openGallery(g); });
+});
+lb.querySelector('.lb-next').addEventListener('click', e => { e.stopPropagation(); step(1); });
+lb.querySelector('.lb-prev').addEventListener('click', e => { e.stopPropagation(); step(-1); });
+lb.querySelector('.lb-close').addEventListener('click', () => lb.classList.remove('open'));
+lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') lb.classList.remove('open');
+  if (e.key === 'ArrowRight') step(1);
+  if (e.key === 'ArrowLeft') step(-1);
+});
+</script>
 </body>
 </html>
